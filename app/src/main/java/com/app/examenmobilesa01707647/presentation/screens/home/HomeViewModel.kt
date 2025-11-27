@@ -14,7 +14,7 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-// Definimos el estado de la UI
+
 data class HomeUiState(
     val stats: List<CovidStat> = emptyList(),
     val isLoading: Boolean = false,

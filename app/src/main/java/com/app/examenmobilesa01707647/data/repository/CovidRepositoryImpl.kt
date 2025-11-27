@@ -13,7 +13,7 @@ class CovidRepositoryImpl @Inject constructor(
     override suspend fun getCovidStats(country: String): List<CovidStat> {
         return try {
             val response = api.getCovidData(country = country)
-            response.map { it.toDomain() }
+            response.take(10).map { it.toDomain() }
         } catch (e: Exception) {
             e.printStackTrace()
             emptyList()
