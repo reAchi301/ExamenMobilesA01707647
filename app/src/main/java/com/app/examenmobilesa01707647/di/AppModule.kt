@@ -15,15 +15,15 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideCovidApi(retrofit: Retrofit): Covid-19Api {
+    fun provideCovidApi(retrofit: Retrofit): CovidApi {
         return retrofit.create(CovidApi::class.java)
     }
 
     @Provides
     @Singleton
     fun provideCovidRepository(
-        api: Covid API
-    ): Covid Repository {
+        api: CovidAPI
+    ): CovidRepository {
         return CovidRepositoryImpl(api)
     }
 }
