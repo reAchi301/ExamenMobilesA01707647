@@ -8,22 +8,22 @@ object AppModule {
     @Singleton
     fun provideRetrofit(): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("https://pokeapi.co/api/v2/")
+            .baseUrl("https://api.api-ninjas.com/v1/covid19?country=canada")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
 
     @Provides
     @Singleton
-    fun providePokemonApi(retrofit: Retrofit): PokemonApi {
-        return retrofit.create(PokemonApi::class.java)
+    fun provideCovidApi(retrofit: Retrofit): Covid-19Api {
+        return retrofit.create(CovidApi::class.java)
     }
 
     @Provides
     @Singleton
-    fun providePokemonRepository(
-        api: PokemonApi
-    ): PokemonRepository {
-        return PokemonRepositoryImpl(api)
+    fun provideCovidRepository(
+        api: Covid API
+    ): Covid Repository {
+        return CovidRepositoryImpl(api)
     }
 }
