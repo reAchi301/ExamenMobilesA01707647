@@ -35,4 +35,10 @@ object AppModule {
     fun provideCovidRepository(api: CovidApi): CovidRepository {
         return CovidRepositoryImpl(api)
     }
+
+    @Provides
+    @Singleton
+    fun providePreferences(@dagger.hilt.android.qualifiers.ApplicationContext context: android.content.Context): com.app.examenmobilesa01707647.data.local.CovidPreferences {
+        return com.app.examenmobilesa01707647.data.local.CovidPreferences(context)
+    }
 }
