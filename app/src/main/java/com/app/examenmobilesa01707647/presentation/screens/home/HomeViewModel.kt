@@ -14,7 +14,7 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-// Definimos el estado de la UI aquí mismo para ir rápido
+// Definimos el estado de la UI
 data class HomeUiState(
     val stats: List<CovidStat> = emptyList(),
     val isLoading: Boolean = false,
@@ -32,7 +32,7 @@ class HomeViewModel @Inject constructor(
     val uiState: StateFlow<HomeUiState> = _uiState.asStateFlow()
 
     init {
-        // Al iniciar, cargamos el último país visto automáticamente
+        // Ultimo pais visto en el Home
         val lastCountry = preferences.getLastCountry()
         searchCountry(lastCountry)
     }
@@ -41,7 +41,7 @@ class HomeViewModel @Inject constructor(
         if (country.isBlank()) return
 
         viewModelScope.launch {
-            // Guardamos la preferencia inmediatamente
+            // Se guarda el pais en las preferencias
             preferences.saveLastCountry(country)
 
             getCovidStatsUseCase(country).collect { result ->
