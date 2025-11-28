@@ -1,13 +1,14 @@
 [versions]
 agp = "8.8.0"
-kotlin = "1.9.24"  # <--- VERSIÓN ESTABLE
+kotlin = "2.0.0" # <--- VOLVEMOS A 2.0
+ksp = "2.0.0-1.0.21" # <--- ESTE ES EL REEMPLAZO DE KAPT (Debe coincidir con Kotlin 2.0)
 coreKtx = "1.15.0"
 junit = "4.13.2"
 junitVersion = "1.2.1"
 espressoCore = "3.6.1"
 lifecycleRuntimeKtx = "2.8.7"
 activityCompose = "1.10.0"
-composeBom = "2024.04.01" # <--- BOM compatible con Kotlin 1.9
+composeBom = "2024.06.00"
 hilt = "2.51.1"
 hilt-navigation = "1.2.0"
 navigationRuntimeKtx = "2.8.5"
@@ -32,25 +33,24 @@ androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-toolin
 androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
+androidx-material = { module = "androidx.compose.material:material", version.ref = "material" }
 
-# Hilt y Navegación
+# Hilt y Nav
 androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigationCompose" }
 androidx-hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hilt-navigation" }
 hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
 hilt-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt" }
 
-# Retrofit
+# Retrofit & Coil
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "converterGson" }
-
-# Coil
 coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coilCompose" }
-
-
-androidx-material = { module = "androidx.compose.material:material", version.ref = "material" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
-
+# RESTAURAMOS EL PLUGIN DE COMPOSE
+kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+# AGREGAMOS EL PLUGIN DE KSP
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
