@@ -1,8 +1,6 @@
 package com.app.examenmobilesa01707647.di
 
 import com.app.examenmobilesa01707647.data.remote.api.CovidApi
-import com.app.examenmobilesa01707647.data.repository.CovidRepositoryImpl
-import com.app.examenmobilesa01707647.domain.repository.CovidRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -28,17 +26,5 @@ object AppModule {
     @Singleton
     fun provideCovidApi(retrofit: Retrofit): CovidApi {
         return retrofit.create(CovidApi::class.java)
-    }
-
-    @Provides
-    @Singleton
-    fun provideCovidRepository(api: CovidApi): CovidRepository {
-        return CovidRepositoryImpl(api)
-    }
-
-    @Provides
-    @Singleton
-    fun providePreferences(@dagger.hilt.android.qualifiers.ApplicationContext context: android.content.Context): com.app.examenmobilesa01707647.data.local.CovidPreferences {
-        return com.app.examenmobilesa01707647.data.local.CovidPreferences(context)
     }
 }
